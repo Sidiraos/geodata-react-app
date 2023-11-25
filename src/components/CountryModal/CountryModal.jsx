@@ -1,11 +1,13 @@
 import './CountryModal.css';
 import { useRef, useEffect } from 'react';
+// API ENDPOINT : `https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`
 
 const CountryModal = ({
 	name,
 	capital,
 	languages,
 	population,
+	maps,
 	onClose,
 	isOpenModal,
 }) => {
@@ -28,6 +30,7 @@ const CountryModal = ({
 			<div
 				ref={modalRef}
 				className={`bg-stone-100 rounded-sm shadow-sm px-8 py-10 relative opacity-100 w-10/12 min-h-48 max-w-2xl modalCard`}
+				onClick={(e) => e.stopPropagation()}
 			>
 				<h4 className="text-xl mb-3">Here is {name}'s information</h4>
 				<p className="mb-2">
@@ -37,7 +40,7 @@ const CountryModal = ({
 				<p className="mb-2">
 					<b>Language(s)</b> : {languages}
 				</p>
-				<p>
+				<p className="mb-4">
 					<b>Population</b> : {population}
 				</p>
 				<button
@@ -46,6 +49,22 @@ const CountryModal = ({
 				>
 					x
 				</button>
+				<a
+					className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 mb-2"
+					href={`https://en.wikipedia.org/wiki/${name}`}
+					target="_blank"
+					rel="noreferrer noopener nofollow"
+				>
+					See on Wikipedia
+				</a>
+				<a
+					className="bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+					href={maps}
+					target="_blank"
+					rel="noreferrer noopener nofollow"
+				>
+					See on Maps
+				</a>
 			</div>
 		</div>
 	);

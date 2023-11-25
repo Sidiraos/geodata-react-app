@@ -16,6 +16,11 @@ function App() {
 			})
 			.then((data) => {
 				setLoading(false);
+				data.sort((a,b)=>{
+					if(a.name.common < b.name.common) return -1
+					else if (a.name.common > b.name.common) return 1
+					else 0
+				})
 				const countriesFilteredData = data.map((country) => {
 					return {
 						name: country.name.common,
@@ -23,6 +28,8 @@ function App() {
 						languages: country.languages,
 						population: country.population,
 						flag: country.flags.svg,
+						alt : country.flags.alt,
+						maps : country.maps.googleMaps
 					};
 				});
 				console.log(countriesFilteredData);
@@ -46,7 +53,7 @@ function App() {
 					{loading ? (
 						<button
 							type="button"
-							className="bg-indigo-500 text-white ..."
+							className="bg-indigo-500 text-white py-5 text-2xl rounded-lg flex justify-center items-center"
 							disabled
 						>
 							<svg
