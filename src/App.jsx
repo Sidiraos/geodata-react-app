@@ -44,9 +44,29 @@ function App() {
 				</p>
 				<div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-xs mx-auto sm:max-w-none">
 					{loading ? (
-						<div>Loading...</div>
+						<button
+							type="button"
+							className="bg-indigo-500 text-white ..."
+							disabled
+						>
+							<svg
+								className="animate-spin h-5 w-5 mr-3 bg-white"
+								viewBox="0 0 24 24"
+							></svg>
+							Loading Data...
+						</button>
 					) : error ? (
-						<div>Error: {error.message}</div>
+						<button
+							type="button"
+							className="bg-red-500 text-white py-5 text-2xl rounded-lg flex justify-center items-center"
+							disabled
+						>
+							<svg
+								className="animate-spin h-5 w-5 mr-3 bg-white"
+								viewBox="0 0 24 24"
+							></svg>
+							Error: {error.message}
+						</button>
 					) : (
 						countryData &&
 						countryData.map((country) => (
