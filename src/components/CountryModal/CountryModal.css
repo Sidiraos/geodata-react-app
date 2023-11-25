@@ -1,0 +1,9 @@
+.modalCard {
+    transform: scale(0);
+    opacity : 0;
+    transition: transform ease-out 200ms , opacity ease-out 200ms ;
+}
+.modalCard.active {
+    transform: scale(1);
+    opacity : 1;
+}
